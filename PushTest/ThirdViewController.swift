@@ -10,10 +10,24 @@ import UIKit
 
 class ThirdViewController: UIViewController {
 
+    @IBAction func send(sender: AnyObject) {
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("Hello", object: nil)
+    }
+    @IBOutlet weak var myLabel: UILabel!
+    
+    var textVal:String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // UIApplication 을 통해 AppDelegate 타입으로 변환
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        myLabel.text = appDelegate.textValue
+        
     }
 
     override func didReceiveMemoryWarning() {
